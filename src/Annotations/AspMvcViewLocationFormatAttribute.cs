@@ -1,0 +1,16 @@
+﻿using System;
+
+namespace FragmentManager.Annotations
+{
+  [AttributeUsage(AttributeTargets.Assembly | AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
+  public sealed class AspMvcViewLocationFormatAttribute : Attribute
+  {
+    [NotNull]
+    public string Format { get; private set; }
+
+    public AspMvcViewLocationFormatAttribute([NotNull] string format)
+    {
+      this.Format = format;
+    }
+  }
+}
