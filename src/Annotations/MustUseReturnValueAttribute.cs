@@ -14,7 +14,7 @@ namespace FragmentManager.Annotations
 
     public MustUseReturnValueAttribute([NotNull] string justification)
     {
-      this.Justification = justification;
+      Justification = justification;
     }
   }
 }

@@ -14,7 +14,7 @@ namespace FragmentManager.Annotations
 
     public LocalizationRequiredAttribute(bool required)
     {
-      this.Required = required;
+      Required = required;
     }
   }
 }

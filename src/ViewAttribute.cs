@@ -2,14 +2,17 @@
 
 namespace FragmentManager
 {
-  [AttributeUsage(AttributeTargets.Class)]
-  public class ViewAttribute : Attribute
-  {
-    public Type ViewType { get; private set; }
-
-    public ViewAttribute(Type viewType)
+    /// <summary>
+    /// Binding ViewModel to View attribute
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Class)]
+    public class ViewAttribute : Attribute
     {
-      this.ViewType = viewType;
+        public Type ViewType { get; private set; }
+
+        public ViewAttribute(Type viewType)
+        {
+            ViewType = viewType;
+        }
     }
-  }
 }

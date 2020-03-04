@@ -8,6 +8,6 @@ namespace FragmentManager.Annotations
     Default = 1,
     Itself = Default, // 0x00000001
     Members = 2,
-    WithMembers = Members | Itself, // 0x00000003
+    WithMembers = Members | Itself // 0x00000003
   }
 }

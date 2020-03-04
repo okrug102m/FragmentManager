@@ -10,7 +10,7 @@ namespace FragmentManager.Annotations
 
     public StringFormatMethodAttribute([NotNull] string formatParameterName)
     {
-      this.FormatParameterName = formatParameterName;
+      FormatParameterName = formatParameterName;
     }
   }
 }

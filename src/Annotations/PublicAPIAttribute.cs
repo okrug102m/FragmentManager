@@ -3,18 +3,18 @@
 namespace FragmentManager.Annotations
 {
   [MeansImplicitUse(ImplicitUseTargetFlags.WithMembers)]
-  public sealed class PublicAPIAttribute : Attribute
+  public sealed class PublicApiAttribute : Attribute
   {
     [CanBeNull]
     public string Comment { get; private set; }
 
-    public PublicAPIAttribute()
+    public PublicApiAttribute()
     {
     }
 
-    public PublicAPIAttribute([NotNull] string comment)
+    public PublicApiAttribute([NotNull] string comment)
     {
-      this.Comment = comment;
+      Comment = comment;
     }
   }
 }

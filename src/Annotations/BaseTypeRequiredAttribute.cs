@@ -11,7 +11,7 @@ namespace FragmentManager.Annotations
 
     public BaseTypeRequiredAttribute([NotNull] Type baseType)
     {
-      this.BaseType = baseType;
+      BaseType = baseType;
     }
   }
 }

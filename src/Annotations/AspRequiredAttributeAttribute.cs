@@ -10,7 +10,7 @@ namespace FragmentManager.Annotations
 
     public AspRequiredAttributeAttribute([NotNull] string attribute)
     {
-      this.Attribute = attribute;
+      Attribute = attribute;
     }
   }
 }

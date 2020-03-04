@@ -151,7 +151,7 @@
     <Compile Include="Annotations\RazorWriteMethodParameterAttribute.cs" />
     <Compile Include="Extensions\ApplicationDataTemplatesBuilderExt.cs" />
     <Compile Include="Extensions\CommonAppExt.cs" />
-    <Compile Include="Extensions\SwpContainerBuilderExt.cs" />
+    <Compile Include="Extensions\FragmentManagerContainerBuilderExt.cs" />
     <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

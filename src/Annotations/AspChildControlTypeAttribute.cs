@@ -13,8 +13,8 @@ namespace FragmentManager.Annotations
 
     public AspChildControlTypeAttribute([NotNull] string tagName, [NotNull] Type controlType)
     {
-      this.TagName = tagName;
-      this.ControlType = controlType;
+      TagName = tagName;
+      ControlType = controlType;
     }
   }
 }

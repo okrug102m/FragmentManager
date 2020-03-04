@@ -17,8 +17,8 @@ namespace FragmentManager.Annotations
 
     public ContractAnnotationAttribute([NotNull] string contract, bool forceFullStates)
     {
-      this.Contract = contract;
-      this.ForceFullStates = forceFullStates;
+      Contract = contract;
+      ForceFullStates = forceFullStates;
     }
   }
 }

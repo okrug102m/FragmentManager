@@ -14,16 +14,15 @@ namespace FragmentManager.Shuriken
         /// <param name="app"></param>
         public static void UseShuriken(this ConfigurableApplication app)
         {
-            app.Exit += new ExitEventHandler(ShurikenApplicationExt.AppOnExit);
-            if (ShurikenApplicationExt.applicationMonitorScope != null)
+            app.Exit += AppOnExit;
+            if (applicationMonitorScope != null)
                 throw new InvalidOperationException("Application already init");
-            ShurikenApplicationExt.applicationMonitorScope =
-                new ApplicationMonitorScope((INotificationContext) new WpfNotificationContext(app.Dispatcher));
+            applicationMonitorScope = new ApplicationMonitorScope(new WpfNotificationContext(app.Dispatcher));
         }
 
         private static void AppOnExit(object sender, ExitEventArgs exitEventArgs)
         {
-            ShurikenApplicationExt.applicationMonitorScope.Dispose();
+            applicationMonitorScope.Dispose();
         }
   }
 }

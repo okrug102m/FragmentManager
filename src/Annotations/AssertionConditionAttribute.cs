@@ -9,7 +9,7 @@ namespace FragmentManager.Annotations
 
     public AssertionConditionAttribute(AssertionConditionType conditionType)
     {
-      this.ConditionType = conditionType;
+      ConditionType = conditionType;
     }
   }
 }

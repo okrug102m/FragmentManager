@@ -10,7 +10,7 @@ namespace FragmentManager.Annotations
 
     public RazorDirectiveAttribute([NotNull] string directive)
     {
-      this.Directive = directive;
+      Directive = directive;
     }
   }
 }

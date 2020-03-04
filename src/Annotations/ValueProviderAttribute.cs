@@ -10,7 +10,7 @@ namespace FragmentManager.Annotations
 
     public ValueProviderAttribute([NotNull] string name)
     {
-      this.Name = name;
+      Name = name;
     }
   }
 }

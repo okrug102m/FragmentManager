@@ -10,7 +10,7 @@ namespace FragmentManager.Annotations
 
     public AspMvcAreaPartialViewLocationFormatAttribute([NotNull] string format)
     {
-      this.Format = format;
+      Format = format;
     }
   }
 }

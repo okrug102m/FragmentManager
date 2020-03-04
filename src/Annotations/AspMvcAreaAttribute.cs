@@ -14,7 +14,7 @@ namespace FragmentManager.Annotations
 
     public AspMvcAreaAttribute([NotNull] string anonymousProperty)
     {
-      this.AnonymousProperty = anonymousProperty;
+      AnonymousProperty = anonymousProperty;
     }
   }
 }

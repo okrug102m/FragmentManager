@@ -9,7 +9,7 @@ namespace FragmentManager.Annotations
 
     public AspTypePropertyAttribute(bool createConstructorReferences)
     {
-      this.CreateConstructorReferences = createConstructorReferences;
+      CreateConstructorReferences = createConstructorReferences;
     }
   }
 }

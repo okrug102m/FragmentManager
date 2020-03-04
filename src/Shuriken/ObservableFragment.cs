@@ -22,7 +22,7 @@ namespace FragmentManager.Shuriken
     }
 
     protected ObservableFragment()
-      : base(false)
+      : base()
     {
     }
   }

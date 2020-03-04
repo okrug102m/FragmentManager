@@ -14,7 +14,7 @@ namespace FragmentManager.Annotations
 
     public HtmlElementAttributesAttribute([NotNull] string name)
     {
-      this.Name = name;
+      Name = name;
     }
   }
 }

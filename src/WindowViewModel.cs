@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 namespace FragmentManager
 {
@@ -13,18 +12,18 @@ namespace FragmentManager
     {
       get
       {
-        return this.current;
+        return current;
       }
       set
       {
-        this.SetProperty<IViewModel>(ref this.current, value, nameof (Current));
+        SetProperty(ref current, value, nameof (Current));
       }
     }
 
     protected WindowViewModel(INavigationService navigationService)
     {
-      this.NavigationService = navigationService;
-      this.NavigationService.OnNavigated += new Action<IViewModel>(this.NavigationServiceOnOnNavigated);
+      NavigationService = navigationService;
+      NavigationService.OnNavigated += NavigationServiceOnOnNavigated;
     }
 
     public virtual void OnCreated()
@@ -33,12 +32,12 @@ namespace FragmentManager
 
     public virtual void OnDestroy()
     {
-      this.NavigationService.OnNavigated -= new Action<IViewModel>(this.NavigationServiceOnOnNavigated);
+      NavigationService.OnNavigated -= NavigationServiceOnOnNavigated;
     }
 
     private void NavigationServiceOnOnNavigated(IViewModel viewModel)
     {
-      this.Current = viewModel;
+      Current = viewModel;
     }
   }
 }

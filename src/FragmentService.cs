@@ -12,52 +12,52 @@ namespace FragmentManager
 
     public FragmentService(ILifetimeScope scope)
     {
-      this.Fragments = new ObservableDictionary<string, IFragment>(5);
+      Fragments = new ObservableDictionary<string, IFragment>(5);
       this.scope = scope;
     }
 
     public T CreateFragment<T>(string key) where T : IFragment
     {
-      return (T) this.CreateFragment(key, typeof (T));
+      return (T) CreateFragment(key, typeof (T));
     }
 
     public object CreateFragment(string key, Type type)
     {
       if (!typeof (IFragment).IsAssignableFrom(type))
         throw new ArgumentException("type is not assignable IFragment");
-      IFragment fragment = this.scope.Resolve(type) as IFragment;
-      if (this.Fragments.Keys.Contains(key))
+      IFragment fragment = scope.Resolve(type) as IFragment;
+      if (Fragments.Keys.Contains(key))
       {
-        this.Fragments[key]?.OnDestroy();
-        this.Fragments[key] = fragment;
+        Fragments[key]?.OnDestroy();
+        Fragments[key] = fragment;
       }
       else
-        this.Fragments.Add(key, fragment);
-      return (object) fragment;
+        Fragments.Add(key, fragment);
+      return fragment;
     }
 
     public void SetFragment<T>(string key, T existingFragment) where T : IFragment
     {
-      if (this.Fragments.Keys.Contains(key))
+      if (Fragments.Keys.Contains(key))
       {
-        this.Fragments[key]?.OnDestroy();
-        this.Fragments[key] = (IFragment) existingFragment;
+        Fragments[key]?.OnDestroy();
+        Fragments[key] = existingFragment;
       }
       else
-        this.Fragments.Add(key, (IFragment) existingFragment);
+        Fragments.Add(key, existingFragment);
     }
 
     public void RemoveFragment(string key)
     {
-      if (!this.Fragments.Keys.Contains(key))
+      if (!Fragments.Keys.Contains(key))
         return;
-      this.Fragments[key].OnDestroy();
-      this.Fragments[key] = (IFragment) null;
+      Fragments[key].OnDestroy();
+      Fragments[key] = null;
     }
 
     public void Dispose()
     {
-      foreach (KeyValuePair<string, IFragment> fragment in this.Fragments)
+      foreach (KeyValuePair<string, IFragment> fragment in Fragments)
         fragment.Value.OnDestroy();
     }
   }

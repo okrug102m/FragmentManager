@@ -13,8 +13,8 @@ namespace FragmentManager.Annotations
 
     public RazorInjectionAttribute([NotNull] string type, [NotNull] string fieldName)
     {
-      this.Type = type;
-      this.FieldName = fieldName;
+      Type = type;
+      FieldName = fieldName;
     }
   }
 }

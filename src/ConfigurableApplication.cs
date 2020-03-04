@@ -1,8 +1,6 @@
-﻿using Autofac;
+﻿using System.Windows;
+using Autofac;
 using FragmentManager.Extensions;
-using System;
-using System.Windows;
-using IContainer = Autofac.IContainer;
 
 namespace FragmentManager
 {
@@ -15,7 +13,7 @@ namespace FragmentManager
 
         protected ConfigurableApplication()
         {
-            this.BuildContainer(new Action<ContainerBuilder>(this.ConfigureContainer));
+            this.BuildContainer(ConfigureContainer);
         }
 
         protected virtual void ConfigureContainer(ContainerBuilder builder)
@@ -24,7 +22,7 @@ namespace FragmentManager
 
         protected override void OnExit(ExitEventArgs e)
         {
-            this.AppContainer.Dispose();
+            AppContainer.Dispose();
             base.OnExit(e);
         }
     }

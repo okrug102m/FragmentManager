@@ -10,7 +10,7 @@ namespace FragmentManager.Annotations
 
     public RazorImportNamespaceAttribute([NotNull] string name)
     {
-      this.Name = name;
+      Name = name;
     }
   }
 }

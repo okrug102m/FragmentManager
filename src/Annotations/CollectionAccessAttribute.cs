@@ -9,7 +9,7 @@ namespace FragmentManager.Annotations
 
     public CollectionAccessAttribute(CollectionAccessType collectionAccessType)
     {
-      this.CollectionAccessType = collectionAccessType;
+      CollectionAccessType = collectionAccessType;
     }
   }
 }

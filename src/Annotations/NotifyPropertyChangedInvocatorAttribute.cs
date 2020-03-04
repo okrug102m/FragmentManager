@@ -14,7 +14,7 @@ namespace FragmentManager.Annotations
 
     public NotifyPropertyChangedInvocatorAttribute([NotNull] string parameterName)
     {
-      this.ParameterName = parameterName;
+      ParameterName = parameterName;
     }
   }
 }

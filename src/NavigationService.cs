@@ -9,71 +9,67 @@ namespace FragmentManager
   public class NavigationService : INavigationService
   {
     private readonly ILifetimeScope navigationLifeTimeScope;
-    private readonly Stack<NavigationService.NavigationElement> stack;
+    private readonly Stack<NavigationElement> stack;
 
     public event Action<IViewModel> OnNavigated;
 
-    private NavigationService.NavigationElement Current
+    private NavigationElement Current
     {
       get
       {
-        if (!this.stack.Any<NavigationService.NavigationElement>())
-          return (NavigationService.NavigationElement) null;
-        return this.stack.Peek();
+        if (!stack.Any())
+          return null;
+        return stack.Peek();
       }
     }
 
     public NavigationService(ILifetimeScope navigationLifetimeScope)
     {
-      this.navigationLifeTimeScope = navigationLifetimeScope;
-      this.stack = new Stack<NavigationService.NavigationElement>(20);
-      this.navigationLifeTimeScope.CurrentScopeEnding += new EventHandler<LifetimeScopeEndingEventArgs>(this.NavigationLifeTimeScopeEnding);
+      navigationLifeTimeScope = navigationLifetimeScope;
+      stack = new Stack<NavigationElement>(20);
+      navigationLifeTimeScope.CurrentScopeEnding += NavigationLifeTimeScopeEnding;
     }
 
     public void NavigateTo<T>(bool saveHistory = false) where T : IViewModel
     {
       if (!saveHistory)
       {
-        while (this.stack.Any<NavigationService.NavigationElement>())
-          this.ReleaseCurrentElement();
+        while (stack.Any())
+          ReleaseCurrentElement();
       }
-      this.Current?.ViewModel.OnPause();
-      NavigationService.NavigationElement element = NavigationService.NavigationElement.CreateElement<T>(this.navigationLifeTimeScope.BeginLifetimeScope((object) typeof (T).Name));
-      this.stack.Push(element);
+      Current?.ViewModel.OnPause();
+      NavigationElement element = NavigationElement.CreateElement<T>(navigationLifeTimeScope.BeginLifetimeScope(typeof (T).Name));
+      stack.Push(element);
       element.ViewModel.OnCreated();
-      Action<IViewModel> onNavigated = this.OnNavigated;
-      if (onNavigated == null)
-        return;
-      onNavigated(element.ViewModel);
+      Action<IViewModel> onNavigated = OnNavigated;
+      onNavigated?.Invoke(element.ViewModel);
     }
 
     public void Back()
     {
-      if (this.stack.Count == 0)
+      if (stack.Count == 0)
         throw new InvalidOperationException("Navigation stack is empty");
-      this.ReleaseCurrentElement();
-      this.Current.ViewModel.OnResume();
-      Action<IViewModel> onNavigated = this.OnNavigated;
-      if (onNavigated == null)
-        return;
-      onNavigated(this.Current.ViewModel);
+      ReleaseCurrentElement();
+      Current.ViewModel.OnResume();
+      Action<IViewModel> onNavigated = OnNavigated;
+      onNavigated?.Invoke(Current.ViewModel);
     }
 
     private void NavigationLifeTimeScopeEnding(
       object sender,
       LifetimeScopeEndingEventArgs lifetimeScopeEndingEventArgs)
     {
-      while (this.stack.Any<NavigationService.NavigationElement>())
-        this.ReleaseCurrentElement();
+      while (stack.Any())
+        ReleaseCurrentElement();
     }
 
     private void ReleaseCurrentElement()
     {
-      IViewModel viewModel = this.Current.ViewModel;
+      IViewModel viewModel = Current.ViewModel;
       viewModel.OnPause();
       viewModel.OnDestroy();
-      this.Current.LifetimeScope.Dispose();
-      this.stack.Pop();
+      Current.LifetimeScope.Dispose();
+      stack.Pop();
     }
 
     private class NavigationElement
@@ -84,15 +80,15 @@ namespace FragmentManager
 
       private NavigationElement(ILifetimeScope lifetimeScope, IViewModel viewModel)
       {
-        this.LifetimeScope = lifetimeScope;
-        this.ViewModel = viewModel;
+        LifetimeScope = lifetimeScope;
+        ViewModel = viewModel;
       }
 
-      public static NavigationService.NavigationElement CreateElement<T>(
+      public static NavigationElement CreateElement<T>(
         ILifetimeScope lifetimeScope)
         where T : IViewModel
       {
-        return new NavigationService.NavigationElement(lifetimeScope, (IViewModel) lifetimeScope.Resolve<T>());
+        return new NavigationElement(lifetimeScope, lifetimeScope.Resolve<T>());
       }
     }
   }

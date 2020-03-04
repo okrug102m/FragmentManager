@@ -28,8 +28,8 @@ namespace FragmentManager.Annotations
       ImplicitUseKindFlags useKindFlags,
       ImplicitUseTargetFlags targetFlags)
     {
-      this.UseKindFlags = useKindFlags;
-      this.TargetFlags = targetFlags;
+      UseKindFlags = useKindFlags;
+      TargetFlags = targetFlags;
     }
   }
 }

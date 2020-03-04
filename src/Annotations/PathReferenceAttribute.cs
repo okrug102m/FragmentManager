@@ -14,7 +14,7 @@ namespace FragmentManager.Annotations
 
     public PathReferenceAttribute([NotNull, PathReference] string basePath)
     {
-      this.BasePath = basePath;
+      BasePath = basePath;
     }
   }
 }
