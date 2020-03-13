@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using FragmentManager.Abstractions;
+using FragmentManager.Models;
 
-namespace FragmentManager
+namespace FragmentManager.ViewModels
 {
   public abstract class WindowViewModel : BindableBase, IWindowViewModel, IInternalManagedObject, INotifyPropertyChanged
   {
@@ -10,14 +12,9 @@ namespace FragmentManager
 
     public IViewModel Current
     {
-      get
-      {
-        return current;
-      }
-      set
-      {
-        SetProperty(ref current, value, nameof (Current));
-      }
+      get => current;
+
+      private set => SetProperty(ref current, value, nameof (Current));
     }
 
     protected WindowViewModel(INavigationService navigationService)

@@ -1,5 +1,7 @@
 ﻿using System;
 using Autofac;
+using FragmentManager.Abstractions;
+using FragmentManager.Services;
 
 namespace FragmentManager.Extensions
 {
@@ -19,7 +21,7 @@ namespace FragmentManager.Extensions
     {
       builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
       builder.RegisterType<FragmentService>().As<IFragmentService>().InstancePerLifetimeScope();
-      builder.Register(context => new MessageBus()).As<IMessenger>().InstancePerLifetimeScope();
+      builder.Register(context => new MessageService()).As<IMessengerService>().InstancePerLifetimeScope();
       builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).AssignableTo<IViewModel>().InstancePerLifetimeScope();
       builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).AssignableTo<IFragment>();
       builder.RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies()).AssignableTo<IWindowViewModel>()

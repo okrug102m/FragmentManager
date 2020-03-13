@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace FragmentManager
+namespace FragmentManager.Abstractions
 {
-  public interface IMessenger : IDisposable
+  public interface IMessengerService : IDisposable
   {
     void Publish<T>(T message);
 

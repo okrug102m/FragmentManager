@@ -1,5 +1,8 @@
 ﻿using Example.Views;
 using FragmentManager;
+using FragmentManager.Abstractions;
+using FragmentManager.Attributes;
+using FragmentManager.Services;
 using FragmentManager.Shuriken;
 
 namespace Example.ViewModels

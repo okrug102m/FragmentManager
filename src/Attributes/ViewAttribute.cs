@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FragmentManager
+namespace FragmentManager.Attributes
 {
     /// <summary>
     /// Binding ViewModel to View attribute

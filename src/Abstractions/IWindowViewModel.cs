@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace FragmentManager
+namespace FragmentManager.Abstractions
 {
   public interface IWindowViewModel : IInternalManagedObject, INotifyPropertyChanged
   {

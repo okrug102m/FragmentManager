@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
+using FragmentManager.Abstractions;
+using FragmentManager.Models;
 
-namespace FragmentManager
+namespace FragmentManager.ViewModels
 {
   public abstract class ViewModel : BindableBase, IViewModel, IManagedLifeTimeObject, IInternalManagedObject, INotifyPropertyChanged
   {

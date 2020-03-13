@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace FragmentManager
+namespace FragmentManager.Models
 {
     public abstract class BindableBase : INotifyPropertyChanged
   {

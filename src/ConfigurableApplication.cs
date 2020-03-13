@@ -7,7 +7,7 @@ namespace FragmentManager
     public abstract class ConfigurableApplication : Application
     {
         /// <summary>
-        /// Внутренний контейнер UI
+        /// UI conainer
         /// </summary>
         public IContainer AppContainer { get; internal set; }
 

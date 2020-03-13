@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Windows;
 using Autofac.Core;
+using FragmentManager.Abstractions;
+using FragmentManager.Attributes;
 
 namespace FragmentManager.Extensions
 {

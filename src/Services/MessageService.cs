@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using FragmentManager.Abstractions;
 
-namespace FragmentManager
+namespace FragmentManager.Services
 {
-  public sealed class MessageBus : IMessenger, IDisposable
+  public sealed class MessageService : IMessengerService, IDisposable
   {
     private readonly Dictionary<Type, List<object>> subscribers = new Dictionary<Type, List<object>>();
 

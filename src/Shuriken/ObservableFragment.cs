@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using FragmentManager.Abstractions;
 using Shuriken;
 
 namespace FragmentManager.Shuriken

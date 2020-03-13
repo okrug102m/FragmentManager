@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Autofac;
 using Autofac.Core.Lifetime;
+using FragmentManager.Abstractions;
 
-namespace FragmentManager
+namespace FragmentManager.Services
 {
   public class NavigationService : INavigationService
   {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FragmentManager
+namespace FragmentManager.Abstractions
 {
   public interface INavigationService
   {

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Autofac;
+using FragmentManager.Abstractions;
+using FragmentManager.Models;
 
-namespace FragmentManager
+namespace FragmentManager.Services
 {
   public class FragmentService : IFragmentService, IDisposable
   {
@@ -12,7 +14,7 @@ namespace FragmentManager
 
     public FragmentService(ILifetimeScope scope)
     {
-      Fragments = new ObservableDictionary<string, IFragment>(5);
+      Fragments = new ObservableDictionary<string, IFragment>();
       this.scope = scope;
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
+using FragmentManager.Abstractions;
 
-namespace FragmentManager
+namespace FragmentManager.Models
 {
   public abstract class Fragment : BindableBase, IFragment, IManagedLifeTimeObject, IInternalManagedObject, INotifyPropertyChanged
   {

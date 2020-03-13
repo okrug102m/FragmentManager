@@ -1,4 +1,4 @@
-﻿namespace FragmentManager
+﻿namespace FragmentManager.Abstractions
 {
   public interface IInternalManagedObject
   {

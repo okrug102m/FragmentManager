@@ -1,5 +1,6 @@
 ﻿using Example.ViewModels;
-using FragmentManager;
+using FragmentManager.Abstractions;
+using FragmentManager.ViewModels;
 
 namespace Example
 {
