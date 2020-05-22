@@ -38,5 +38,13 @@
              Minimum="0"
              Maximum="{Binding Data.ProgressValueSecond, Mode=OneWay}"
              Value="{Binding Data.ProgressValue, Mode=OneWay}"/>
+<Button Grid.Row="2"
+        Grid.Column="0"
+        Content="Start"
+        Command="{Binding StartCommand}"/>
+<Button Grid.Row="2"
+        Grid.Column="2"
+        Content="Stop"
+        Command="{Binding StopCommand}"/>
     </Grid>
 </UserControl>

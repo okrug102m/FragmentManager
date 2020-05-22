@@ -1,10 +1,9 @@
-﻿using System.Threading.Tasks;
-using System.Windows;
-using Example.Models;
+﻿using Example.Models;
 using Example.Views;
 using FragmentManager.Attributes;
 using FragmentManager.Shuriken;
 using Shuriken;
+using System.Threading.Tasks;
 
 namespace Example.ViewModels
 {
@@ -14,16 +13,33 @@ namespace Example.ViewModels
         [Observable]
         public TestData Data { get; private set; }
 
+        public Command StartCommand { get; set; }
+
+        public Command StopCommand { get; set; }
+
         public TestViewModel()
         {
             Data = new TestData();
 
+            Start();
+
+            StartCommand = new Command(() => Data.IsActiv = true);
+
+            StopCommand = new Command(() => Data.IsActiv = false);
+        }
+
+        private void Start()
+        {
             Task.Run(() =>
             {
                 while (true)
                 {
-                    Data.ProgressValue++;
-                    Data.ProgressValueSecond += 1.3;
+                    if (Data.IsActiv)
+                    {
+                        Data.ProgressValue++;
+                        Data.ProgressValueSecond += 1.3;
+                    }
+                    
                     Task.Delay(100).Wait();
                 }
             });

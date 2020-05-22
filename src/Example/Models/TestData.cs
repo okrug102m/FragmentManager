@@ -9,5 +9,8 @@ namespace Example.Models
 
         [Observable]
         public double ProgressValueSecond { get; set; }
+
+        [Observable]
+        public bool IsActiv { get; set; }
     }
 }
