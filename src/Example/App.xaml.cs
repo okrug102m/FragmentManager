@@ -2,6 +2,9 @@
 using FragmentManager.Extensions;
 using FragmentManager.Shuriken;
 using System.Windows;
+using Autofac.Core.Lifetime;
+using FragmentManager.Abstractions;
+using FragmentManager.Services;
 
 namespace Example
 {

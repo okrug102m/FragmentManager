@@ -1,15 +1,18 @@
-﻿using System;
-using System.Linq;
-using System.Windows;
+﻿using Autofac;
 using Autofac.Core;
 using FragmentManager.Abstractions;
 using FragmentManager.Attributes;
+using System;
+using System.Linq;
+using System.Windows;
 
 namespace FragmentManager.Extensions
 {
-  public static class ApplicationDataTemplatesBuilderExt
-  {
-    public static void UseDataTemplatesBuilderByAttributes(this ConfigurableApplication app)
+    public static class ApplicationDataTemplatesBuilderExt
+    {
+        public static ResourceDictionary ResourceDictionaryKeys;
+
+        public static void UseDataTemplatesBuilderByAttributes(this ConfigurableApplication app)
     {
         //ViewModels list
       var types = app.AppContainer.ComponentRegistry.Registrations
@@ -25,7 +28,9 @@ namespace FragmentManager.Extensions
           return true;
       });
       var resourceDictionary = new ResourceDictionary();
-      resourceDictionary.BeginInit();
+      ResourceDictionaryKeys = new ResourceDictionary();
+            ResourceDictionaryKeys.BeginInit();
+            resourceDictionary.BeginInit();
       foreach (var type in types)
       {
         ViewAttribute customAttribute = (ViewAttribute) Attribute.GetCustomAttribute(type, typeof (ViewAttribute));
@@ -39,6 +44,7 @@ namespace FragmentManager.Extensions
           resourceDictionary.Add(new DataTemplateKey(type), dataTemplate);
         }
       }
+
       resourceDictionary.EndInit();
       app.Resources.MergedDictionaries.Add(resourceDictionary);
     }

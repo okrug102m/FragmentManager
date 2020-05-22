@@ -194,14 +194,8 @@ namespace FragmentManager.Models
 
     public TValue this[TKey key]
     {
-      get
-      {
-        return Dictionary[key];
-      }
-      set
-      {
-        Insert(key, value, false);
-      }
+      get => Dictionary[key];
+      set => Insert(key, value, false);
     }
 
     public void Add(KeyValuePair<TKey, TValue> item)

@@ -9,6 +9,11 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Red">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="399*"/>
+            <ColumnDefinition Width="401*"/>
+        </Grid.ColumnDefinitions>
+<ContentControl Grid.Column="1"
+                Content="{Binding FragmentService.Fragments[First]}"/>
     </Grid>
 </UserControl>

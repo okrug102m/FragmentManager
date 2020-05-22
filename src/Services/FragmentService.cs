@@ -10,7 +10,7 @@ namespace FragmentManager.Services
   {
     private readonly ILifetimeScope scope;
 
-    public ObservableDictionary<string, IFragment> Fragments { get; }
+    public ObservableDictionary<string, IFragment> Fragments { get;}
 
     public FragmentService(ILifetimeScope scope)
     {
