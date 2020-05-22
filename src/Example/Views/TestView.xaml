@@ -4,10 +4,39 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Example.Views"
+             xmlns:viewModels="clr-namespace:Example.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="GreenYellow">
+             Background="LightBlue"
+             d:DataContext="{d:DesignInstance Type = viewModels:TestViewModel}">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="240*"/>
+            <ColumnDefinition Width="81*"/>
+        </Grid.ColumnDefinitions>
+<TextBlock Grid.Row="1"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"
+           FontSize="14"
+           Text="{Binding Data.ProgressValue, Mode=OneWay}"/>
+<TextBlock Grid.Row="1"
+           Grid.Column="2"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"
+           FontSize="14"
+           Text="{Binding Data.ProgressValueSecond, Mode=OneWay, StringFormat=F2}"/>
+<ProgressBar Grid.Column="1"
+             Grid.Row="1"
+             Background="CadetBlue"
+             Foreground="Coral"
+             Minimum="0"
+             Maximum="{Binding Data.ProgressValueSecond, Mode=OneWay}"
+             Value="{Binding Data.ProgressValue, Mode=OneWay}"/>
     </Grid>
 </UserControl>
