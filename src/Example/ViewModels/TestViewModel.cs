@@ -4,12 +4,15 @@ using FragmentManager.Attributes;
 using FragmentManager.Shuriken;
 using Shuriken;
 using System.Threading.Tasks;
+using FragmentManager.Abstractions;
 
 namespace Example.ViewModels
 {
     [View(typeof(TestView))]
     public class TestViewModel:ObservableFragment
     {
+        private readonly IMessengerService _messenger;
+
         [Observable]
         public TestData Data { get; private set; }
 
@@ -17,8 +20,9 @@ namespace Example.ViewModels
 
         public Command StopCommand { get; set; }
 
-        public TestViewModel()
+        public TestViewModel(IMessengerService messenger)
         {
+            _messenger = messenger;
             Data = new TestData();
 
             Start();
@@ -38,6 +42,8 @@ namespace Example.ViewModels
                     {
                         Data.ProgressValue++;
                         Data.ProgressValueSecond += 1.3;
+                        //Pub test
+                        _messenger.Publish(Data);
                     }
                     
                     Task.Delay(100).Wait();
